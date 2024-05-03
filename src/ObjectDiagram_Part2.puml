@@ -1,0 +1,37 @@
+@startuml
+object document {
+}
+
+object propertiesFactory {
+  flyweights : Map<String,CharacterProperties>
+}
+
+object characterProperties1 {
+  font = "Arial"
+  color = "Black"
+  size = 12
+}
+
+object characterProperties2 {
+  font = "Courier"
+  color = "Red"
+  size = 16
+}
+
+object character1 {
+  character = 'H'
+  characterProperty = characterProperties2
+}
+
+object character2 {
+  character = 'W'
+  characterProperty = characterProperties2
+}
+
+document ..> character1
+document ..> character2
+document ..> propertiesFactory
+
+propertiesFactory ..> characterProperties1
+propertiesFactory ..> characterProperties2
+@enduml
